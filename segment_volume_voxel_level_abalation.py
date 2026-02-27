@@ -19,13 +19,7 @@ Feature pipeline:
   No need to separately concatenate radiomics at inference.
 
 Run command:
-    python segment_volume.py \
-        --npz /path/to/patient.npz \
-        --checkpoint ./results_distill_final/model-60.pt \
-        --clustering gmm \
-        --auto_k --k_min 2 --k_max 8 \
-        --adaptive_labels \
-        --out ./seg_distill
+    
 
     # Fixed K (no auto):
     python segment_volume.py \
@@ -889,49 +883,6 @@ def main():
 if __name__ == '__main__':
     main()
 '''
-Mode 1 — decoder_only (run this first, sanity check):
-python segment_volume_voxel_level_abalation.py \
-    --npz /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA/bpco__AKT_HIK_POUMON.npz \
-    --checkpoint ./results_distill_final/model-60.pt \
-    --feature_mode decoder_only \
-    --clustering gmm --k 3 --adaptive_labels \
-    --out ./seg_decoder_only
-Expected: no block artifacts, good spatial boundaries, but no radiomic alignment. Best spatial precision of all modes. This tells you if the decoder features alone are good.
 
-Mode 2 — proj_decoder (recommended, run second):
-python segment_volume_voxel_level_abalation.py \
-    --npz /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA/bpco__AKT_HIK_POUMON.npz \
-    --checkpoint ./results_distill_final/model-60.pt \
-    --feature_mode proj_decoder \
-    --clustering gmm --k 4 --adaptive_labels \
-    --out ./seg_proj_decoder
-Expected: no block artifacts + better tissue separation than decoder_only because proj_head adds radiomic semantics. This should be your best result.
-
-Mode 3 — bottleneck_only (baseline, for MICCAI comparison):
-python segment_volume_voxel_level_abalation.py \
-    --npz /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA/bpco__AKT_HIK_POUMON.npz \
-    --checkpoint ./results/model-8.pt \
-    --feature_mode bottleneck_only \
-    --no-use_proj_head \
-    --clustering gmm --k 4 --adaptive_labels \
-    --out ./seg_baseline
-Expected: block artifacts, but shows what you had before distillation. Pure baseline.
-
-Mode 4 — proj_only (ablation only, already know it's bad):
-python segment_volume_voxel_level_abalation.py \
-    --npz /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA/bpco__AKT_HIK_POUMON.npz \
-    --checkpoint ./results_distill_final/model-60.pt \
-    --feature_mode proj_only \
-    --clustering gmm --k 5 --adaptive_labels \
-    --out ./seg_proj_only
-
-
-python segment_volume_voxel_level_abalation.py \
-    --npz /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA/bpco__AKT_HIK_POUMON.npz \
-    --checkpoint ./results_distill_final/model-60.pt \
-    --feature_mode bottleneck_only \
-    --no-use_proj_head \
-    --clustering gmm --k 4 --adaptive_labels \
-    --out ./seg_distill_bottleneck_only
 
 '''
