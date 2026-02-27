@@ -13,7 +13,7 @@ Output:
 
 Usage:
     python precompute_patches.py \
-        --npz_dir /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA \
+        --npz_dir  \
         --out_dir ./patches_precomputed \
         --patches_per_patient 150 \
         --num_workers 32
@@ -197,7 +197,7 @@ if __name__ == '__main__':
 
 '''
 python precompute_patches.py \
-    --npz_dir /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA \
+    --npz_dir  \
     --out_dir ./patches_precomputed \
     --patches_per_patient 150 \
     --num_workers 24
