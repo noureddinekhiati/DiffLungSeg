@@ -21,18 +21,7 @@ Why reconstruction error?
   anomaly signal we use before adding distillation.
 
 Usage:
-    python inference_volume.py \
-        --npz /path/to/NPZ/bpco__PATIENT.npz \
-        --checkpoint /path/to/results/model-1.pt \
-        --out ./inference_results \
-        --steps 20
-
-    # Run on all volumes in a folder
-    python inference_volume.py \
-        --npz_dir /path/to/NPZ_DATASET \
-        --checkpoint /path/to/results/model-1.pt \
-        --out ./inference_results \
-        --max_patients 10
+    
 """
 
 import os
@@ -531,18 +520,5 @@ if __name__ == '__main__':
     main()
 
 """
-# one volume 
-python inference_volume.py \
-    --npz  /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA/ild__ait__dicom.npz \
-    --checkpoint /home/rkhiati/MICCAI_2026/Lung-DDPM-PLUS/results_distill_final/model-60.pt \
-    --out ./inference_distill \
-    --steps 20
 
-# few volumes 
-python inference_volume.py \
-    --npz_dir /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA \
-    --checkpoint /home/rkhiati/MICCAI_2026/Lung-DDPM-PLUS/results_distill_final/model-60.pt \
-    --out ./inference_distill \
-    --max_patients 5 \
-    --steps 20
 """
