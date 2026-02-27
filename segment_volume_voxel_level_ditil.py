@@ -715,33 +715,7 @@ if __name__ == '__main__':
     main()
 
 '''
-# auto k 
-python segment_volume_voxel_level_ditil.py \
-    --npz /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA/bpco__AKT_HIK_POUMON.npz \
-    --checkpoint ./results_distill_final/model-60.pt \
-    --clustering gmm --auto_k --k_min 2 --k_max 8 \
-    --adaptive_labels \
-    --timesteps 100 \
-    --out ./seg_distill_autoK
 
-# K selected 
-python segment_volume_voxel_level_ditil.py \
-    --npz /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA/bpco__AKT_HIK_POUMON.npz \
-    --checkpoint ./results_distill_final/model-60.pt \
-    --clustering gmm --k 3 \
-    --adaptive_labels \
-    --timesteps 100 \
-    --out ./seg_distill_K5
-
-# No proj head 
-python segment_volume_voxel_level_ditil.py \
-    --npz /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA/bpco__AKT_HIK_POUMON.npz \
-    --checkpoint ./results_distill_final/model-60.pt \
-    --no-use_proj_head \
-    --clustering gmm --k 5 \
-    --adaptive_labels \
-    --timesteps 100 \
-    --out ./seg_baseline
 ```
 
 The key difference from v2:
