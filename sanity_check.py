@@ -209,8 +209,8 @@ print("""
 Recommended launch command:
 
     python train_distill.py \\
-        --npz_dir /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA \\
-        --resume  /path/to/your/latest/model-X.pt \\
+        --npz_dir  \\
+        --resume   \\
         --start_step 3000 \\
         --out ./runs/distill \\
         --steps 30000 \\
