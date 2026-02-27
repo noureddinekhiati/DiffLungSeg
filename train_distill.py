@@ -3,22 +3,6 @@
 """
 train_distill.py  (v2 — multi-GPU + sample_every)
 ──────────────────────────────────────────────────
-Launch command (mirrors your existing train.py):
-
-    torchrun --nproc_per_node=2 train_distill.py \
-        --npz_dir /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA \
-        --results_dir ./results_distill \
-        --batch_size 16 \
-        --lr 1e-4 \
-        --epochs 30000 \
-        --timesteps 250 \
-        --sample_every 500 \
-        --patch_h 96 --patch_w 96 --patch_d 32 \
-        --resume ./results/model-X.pt \
-        --start_step 4000 \
-        --warmup_start 5000 \
-        --warmup_end 7000 \
-        --lambda_max 0.3
 
 Distillation timeline:
     steps 0    → 5000:  lambda=0   pure diffusion (same as before)
