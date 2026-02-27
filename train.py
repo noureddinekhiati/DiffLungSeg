@@ -155,19 +155,7 @@ if __name__ == '__main__':
 
 '''
 # test command 
-python train.py --npz_dir /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA
 
-# run in two gpus command 
-torchrun --nproc_per_node=2 train.py \
-    --npz_dir /home/rkhiati/MICCAI_2026/DIFF_SEG_LUNG_DATA \
-    --results_dir ./results \
-    --batch_size 8 \
-    --lr 1e-4 \
-    --epochs 100000 \
-    --timesteps 250 \
-    --sample_every 500 \
-    --patch_h 96 \
-    --patch_w 96 \
-    --patch_d 32
+
 
 '''
