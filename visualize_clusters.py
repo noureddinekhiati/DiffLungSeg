@@ -6,13 +6,7 @@ visualize_clusters.py
 Visualize radiomic clustering on ONE NPZ volume.
 All features computed ONLY on lung voxels (mask applied inside each descriptor).
 
-Usage:
-    python visualize_clusters.py \
-        --npz /home/nkhiati/data_disk/CT_DATA/DIFF_SEG_LUNG_DATA/bpco__AKT_HIK_POUMON.npz \
-        --out ./cluster_preview \
-        --k 5
 
-Try k=4,5,6 and pick the one with cleanest anatomical separation.
 """
 
 import os
